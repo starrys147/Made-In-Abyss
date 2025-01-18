@@ -37,23 +37,23 @@ public class MIA
     public static final String MOD_ID = "mia";
     // 直接引用一个 slf4j 日志记录器
     private static final Logger LOGGER = LogUtils.getLogger();
-    // 创建一个 Deferred Register 用于注册 Block，这些 Block 将在 "examplemod" 命名空间下注册
+    // 创建一个 Deferred Register 用于注册 Block，这些 Block 将在 "mia" 命名空间下注册
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
-    // 创建一个 Deferred Register 用于注册 Item，这些 Item 将在 "examplemod" 命名空间下注册
+    // 创建一个 Deferred Register 用于注册 Item，这些 Item 将在 "mia" 命名空间下注册
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-    // 创建一个 Deferred Register 用于注册 CreativeModeTab，这些 Tab 将在 "examplemod" 命名空间下注册
+    // 创建一个 Deferred Register 用于注册 CreativeModeTab，这些 Tab 将在 "mia" 命名空间下注册
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
 
-    // 创建一个新的 Block，其 ID 为 "examplemod:example_block"，结合命名空间和路径
+    // 创建一个新的 Block，其 ID 为 "mia:example_block"，结合命名空间和路径
     public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-    // 创建一个新的 BlockItem，其 ID 为 "examplemod:example_block"，结合命名空间和路径
+    // 创建一个新的 BlockItem，其 ID 为 "mia:example_block"，结合命名空间和路径
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
 
-    // 创建一个新的食物物品，其 ID 为 "examplemod:example_item"，营养值为 1，饱腹感为 2
+    // 创建一个新的食物物品，其 ID 为 "mia:example_item"，营养值为 1，饱腹感为 2
     public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEat().nutrition(1).saturationMod(2f).build())));
 
-    // 创建一个新的创意模式标签，其 ID 为 "examplemod:example_tab"，用于示例物品，并放置在战斗标签之后
+    // 创建一个新的创意模式标签，其 ID 为 "mia:example_tab"，用于示例物品，并放置在战斗标签之后
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
