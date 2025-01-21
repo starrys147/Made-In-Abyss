@@ -1,6 +1,5 @@
 package com.altnoir.mia.content.blocks.items;
 
-import com.altnoir.mia.content.blocks.MIABaseBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 
