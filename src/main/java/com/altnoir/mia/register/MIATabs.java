@@ -17,10 +17,11 @@ public class MIATabs {
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.mia.base"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-                    .icon(() -> MIAItems.EXAMPLE_BLOCK_ITEM.get().getDefaultInstance())
+                    .icon(() -> MIAItems.EXAMPLE_ITEM.get().getDefaultInstance())
                     .displayItems((a, b) -> {
-                        b.accept(MIAItems.EXAMPLE_BLOCK_ITEM.get());
                         b.accept(MIAItems.EXAMPLE_ITEM.get());
+                        b.accept(MIABlocks.EXAMPLE_PORTAL_BLOCK.get());
+                        b.accept(MIABlocks.EXAMPLE_BLOCK.get());
                     })
                     .build());
 
