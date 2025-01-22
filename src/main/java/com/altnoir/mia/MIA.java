@@ -6,11 +6,9 @@ import com.altnoir.mia.register.MIAItems;
 import com.altnoir.mia.register.MIATabs;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -45,9 +43,6 @@ public class MIA
         // 注册我们感兴趣的服务器和其他游戏事件
         MinecraftForge.EVENT_BUS.register(this);
 
-        // 注册物品到创意模式标签
-        modEventBus.addListener(this::addCreative);
-
         // 注册我们的 ForgeConfigSpec，以便 Forge 可以为我们创建和加载配置文件
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -63,13 +58,6 @@ public class MIA
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
         Config.items.forEach((item) -> LOGGER.info("物品 >> {}", item.toString()));
-    }
-
-    // 将示例方块物品添加到建筑方块标签
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-            event.accept(MIAItems.EXAMPLE_BLOCK_ITEM);
     }
 
     // 使用 SubscribeEvent 并让事件总线发现带有 @SubscribeEvent 注解的方法来调用
