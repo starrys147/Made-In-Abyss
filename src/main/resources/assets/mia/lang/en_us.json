@@ -2,6 +2,8 @@
   "itemGroup.mia.mia": "Made In Abyss",
   "item.mia.purin": "Purin",
 
+  "block.mia.alexandrite_block": "Alexandrite Block",
+
   "block.mia.example_block": "Example Block",
   "block.mia.example_portal_block": "Example Portal Block"
 }

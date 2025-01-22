@@ -2,6 +2,8 @@
   "itemGroup.mia.mia": "来自深渊",
   "item.mia.purin": "布丁",
 
+  "block.mia.alexandrite_block": "紫翠块",
+
   "block.mia.example_block": "测试方块",
   "block.mia.example_portal_block": "测试传送方块"
 }
