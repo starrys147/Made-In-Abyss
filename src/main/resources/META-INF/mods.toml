@@ -64,6 +64,7 @@ versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
 
+
 # 特性是游戏环境中的一些特定属性，你可能需要声明它们。此示例声明你的模组需要 GL 版本 3.2 或更高。
 # 其他特性将被添加。它们是侧边感知的，所以声明这个不会阻止你的模组在服务器上加载，例如。
 #[features.${mod_id}]
