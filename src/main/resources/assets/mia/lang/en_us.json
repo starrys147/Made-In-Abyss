@@ -1,7 +1,7 @@
 {
   "itemGroup.mia.base": "Made In Abyss",
-  "block.mia.example_block": "Example Block",
-  "block.mia.example_portal_block": "Example Portal Block",
+  "item.mia.example_item": "Example Item",
 
-  "item.mia.example_item": "Example Item"
+  "block.mia.example_block": "Example Block",
+  "block.mia.example_portal_block": "Example Portal Block"
 }
