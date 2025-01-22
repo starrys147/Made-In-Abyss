@@ -4,10 +4,10 @@
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Altnoir/Made-In-Abyss/total)](https://github.com/Altnoir/Made-In-Abyss/releases/latest)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Altnoir/Made-In-Abyss/ci-build.yml)](https://github.com/Altnoir/Made-In-Abyss/actions/workflows/ci-build.yml)
 
-This is a sad story, at first just because I a careless... but! Fortunately back to the original appearance.
+The "Made In Abyss" mod based on Minecraft is currently under development...
 
 ## Getting Started
-1. Use [IntelliJ IDEA](https://www.jetbrains.com/idea/) & [JDK 17](https://adoptium.net/temurin/releases/?os=any&version=17)
+1. 使用 [IntelliJ IDEA](https://www.jetbrains.com/idea/) & [JDK 17](https://adoptium.net/temurin/releases/?os=any&version=17)
 2. Run `gradlew runData`
 3. Run `gradlew runClient`
 
