@@ -11,16 +11,16 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class MIAItems {
-    private static final DeferredRegister<Item> REGISTER =
+    private static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MIA.MOD_ID);
 
-    public static final RegistryObject<Item> EXAMPLE_ITEM = REGISTER.register("example_item", ExampleItem::new);
+    public static final RegistryObject<Item> PURIN = ITEMS.register("purin", Purin::new);
 
     public static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
-        REGISTER.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    public static void register(IEventBus modEventBus){
-        REGISTER.register(modEventBus);
+    public static void register(IEventBus modEventBus) {
+        ITEMS.register(modEventBus);
     }
 }

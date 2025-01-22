@@ -3,9 +3,9 @@ package com.altnoir.mia.content.items;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
-public class ExampleItem extends MIABaseItem {
-    public ExampleItem() {
+public class Purin extends MIABaseItem {
+    public Purin() {
         super(new Item.Properties().food(new FoodProperties.Builder()
-                .alwaysEat().nutrition(1).saturationMod(2f).build()));
+                .fast().nutrition(2).saturationMod(2f).build()));
     }
 }

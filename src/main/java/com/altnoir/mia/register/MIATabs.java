@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -13,15 +14,11 @@ public class MIATabs {
     private static final DeferredRegister<CreativeModeTab> REGISTER =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MIA.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> MIA_BASE_TAB = REGISTER.register("base",
-            () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.mia.base"))
-                    .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-                    .icon(() -> MIAItems.EXAMPLE_ITEM.get().getDefaultInstance())
-                    .displayItems((a, b) -> {
-                        b.accept(MIAItems.EXAMPLE_ITEM.get());
-                        b.accept(MIABlocks.EXAMPLE_PORTAL_BLOCK.get());
-                        b.accept(MIABlocks.EXAMPLE_BLOCK.get());
+    public static final RegistryObject<CreativeModeTab> MIA_TAB = REGISTER.register("mia",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(MIAItems.PURIN.get()))
+                    .title(Component.translatable("itemGroup.mia.mia"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(MIAItems.PURIN.get());
                     })
                     .build());
 
