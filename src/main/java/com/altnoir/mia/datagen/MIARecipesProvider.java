@@ -1,7 +1,6 @@
 package com.altnoir.mia.datagen;
 
 import com.altnoir.mia.register.MIABlocks;
-import com.altnoir.mia.register.MIAItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;

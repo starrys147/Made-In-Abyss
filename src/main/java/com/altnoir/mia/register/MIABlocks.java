@@ -3,8 +3,6 @@ package com.altnoir.mia.register;
 import com.altnoir.mia.MIA;
 import com.altnoir.mia.content.blocks.ExampleBlock;
 import com.altnoir.mia.content.blocks.ExamplePortalBlock;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
