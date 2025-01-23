@@ -25,6 +25,7 @@ public class MIAItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        simpleItem(MIAItems.PURIN);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
