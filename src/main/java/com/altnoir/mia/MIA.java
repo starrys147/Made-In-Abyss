@@ -1,6 +1,5 @@
 package com.altnoir.mia;
 
-import com.altnoir.mia.content.worldgen.centralholegen.HoleGenerator;
 import com.altnoir.mia.register.MIABlocks;
 import com.altnoir.mia.register.MIAEffects;
 import com.altnoir.mia.register.MIAItems;
@@ -9,7 +8,6 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

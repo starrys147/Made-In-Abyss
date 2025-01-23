@@ -1,6 +1,5 @@
 package com.altnoir.mia.mixin;
 
-import com.altnoir.mia.content.worldgen.centralholegen.HoleGenerator;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.chunk.ChunkAccess;
