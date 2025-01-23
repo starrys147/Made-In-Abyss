@@ -45,6 +45,8 @@ public class MIA
 
         // 注册我们的 ForgeConfigSpec，以便 Forge 可以为我们创建和加载配置文件
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        //MinecraftForge.EVENT_BUS.register(new HoleGenerator());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

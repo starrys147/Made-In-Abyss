@@ -1,5 +1,7 @@
 package com.altnoir.mia;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -36,12 +38,17 @@ public class Config
             .comment("A list of items to log on common setup.")
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
 
+    private static final ForgeConfigSpec.ConfigValue<String> HOLE_GENERATOR_CONFIG = BUILDER
+            .comment("The config of central hole generation")
+            .define("hole_generator", "{\"minecraft:overworld\":{\"0\": 128, \"128\": 128, \"mix_width\": 0}}");
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean logDirtBlock;
     public static int magicNumber;
     public static String magicNumberIntroduction;
     public static Set<Item> items;
+    public static JsonObject holeGeneratorConfig;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -59,5 +66,7 @@ public class Config
         items = ITEM_STRINGS.get().stream()
                 .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
                 .collect(Collectors.toSet());
+
+        holeGeneratorConfig = JsonParser.parseString(HOLE_GENERATOR_CONFIG.get()).getAsJsonObject();
     }
 }
