@@ -1,9 +1,21 @@
+buildscript {
+    repositories {
+        // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
+        maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
 plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = mod_version
@@ -131,6 +143,8 @@ dependencies {
     compileOnly fg.deobf("squeek.appleskin:appleskin-forge:${appleskin_version}:api")
     runtimeOnly fg.deobf("squeek.appleskin:appleskin-forge:${appleskin_version}")
 
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
@@ -205,4 +219,13 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+mixin {
+    // MixinGradle 设置
+    add sourceSets.main, 'mixins.mia.refmap.json'
+    config 'mixins.mia.json'
+
+    debug.verbose = true
+    debug.export = true
 }

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.altnoir.mia.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.mia.refmap.json",
+  "mixins": [
+    "NoiseBasedChunkGeneratorMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
