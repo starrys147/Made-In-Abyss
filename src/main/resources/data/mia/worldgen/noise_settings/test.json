@@ -12,7 +12,7 @@
   "disable_mob_generation": false,
   "legacy_random_source": false,
   "noise": {
-    "height": 256,
+    "height": 320,
     "min_y": -64,
     "size_horizontal": 4,
     "size_vertical": 2
@@ -40,45 +40,45 @@
               "type": "minecraft:blend_density",
               "argument": {
                 "type": "minecraft:add",
-                "argument1": 0.1171875,
+                "argument1": 0.3171875,
                 "argument2": {
                   "type": "minecraft:mul",
                   "argument1": {
                     "type": "minecraft:y_clamped_gradient",
-                    "from_value": 8,
-                    "from_y": -16,
-                    "to_value": 4,
-                    "to_y": -8
+                    "from_value": 0.15,
+                    "from_y": 0,
+                    "to_value": 1,
+                    "to_y": 64
                   },
                   "argument2": {
                     "type": "minecraft:add",
-                    "argument1": -0.1171875,
+                    "argument1": 0.1171875,
                     "argument2": {
                       "type": "minecraft:add",
-                      "argument1": -0.1171875,
+                      "argument1": 0.1171875,
                       "argument2": {
                         "type": "minecraft:mul",
                         "argument1": {
                           "type": "minecraft:y_clamped_gradient",
-                          "from_value": 0.5,
-                          "from_y": 0,
-                          "to_value": 0.5,
-                          "to_y": 256
+                          "from_value": -0.5,
+                          "from_y": 16,
+                          "to_value": 1,
+                          "to_y": 192
                         },
                         "argument2": {
                           "type": "minecraft:add",
-                          "argument1": 0.078125,
+                          "argument1": 0.178125,
                           "argument2": {
                             "type": "minecraft:range_choice",
                             "input": "minecraft:overworld/sloped_cheese",
-                            "max_exclusive": 0.5625,
+                            "max_exclusive": 8.5625,
                             "min_inclusive": -1000000,
                             "when_in_range": {
                               "type": "minecraft:min",
                               "argument1": "minecraft:overworld/sloped_cheese",
                               "argument2": {
                                 "type": "minecraft:mul",
-                                "argument1": 5,
+                                "argument1": 50,
                                 "argument2": "minecraft:overworld/caves/entrances"
                               }
                             },
