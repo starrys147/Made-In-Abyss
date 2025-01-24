@@ -23,9 +23,6 @@ jobs:
           java-version: 17
           cache: gradle
 
-      - name: Set up Gradle
-        uses: gradle/wrapper-validation-action@v1
-
       - name: Make gradle wrapper executable
         run: chmod +x ./gradlew
 
