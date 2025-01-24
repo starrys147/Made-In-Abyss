@@ -8,28 +8,18 @@
     "lava_level": {
       "above_bottom": 0
     },
-    "replaceable": "#minecraft:overworld_carver_replaceables",
+    "replaceable": "#mia:abyss1_hole_replaceable",
     "critical_radius": {
-      "-63": 192,
-      "-32": 192,
-      "-31": 200,
-      "0": 200,
-      "1": 208,
-      "32": 208,
-      "33": 216,
-      "64": 216,
-      "65": 224,
-      "96": 224,
-      "97": 232,
-      "128": 232,
-      "129": 240,
-      "160": 240,
-      "161": 248,
-      "192": 248,
-      "193": 256,
-      "224": 256,
-      "225": 264,
-      "256": 264
+      "-59": 16,
+      "-51": 96,
+      "-32": 104,
+      "-1": 104,
+      "0": 112,
+      "31": 112,
+      "32": 120,
+      "63": 120,
+      "64": 128,
+      "256": 512
     },
     "yScale": {
       "type": "minecraft:uniform",
@@ -38,8 +28,8 @@
         "min_inclusive": 0.1
       }
     },
-    "mix_width": 0,
+    "mix_width": 4,
     "noise_horizontal_multiplier": 1,
-    "noise_vertical_multiplier": 1
+    "noise_vertical_multiplier": 4
   }
 }

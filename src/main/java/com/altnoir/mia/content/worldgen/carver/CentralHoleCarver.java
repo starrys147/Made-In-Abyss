@@ -55,7 +55,7 @@ public class CentralHoleCarver extends WorldCarver<CentralHoleCarverConfiguratio
         super(pCodec);
     }
 
-    private static final double PI = 3.1416;
+    private static final double PI = Math.PI;
     @Override
     public boolean carve(CarvingContext pContext, CentralHoleCarverConfiguration pConfig, ChunkAccess pChunk, Function<BlockPos, Holder<Biome>> pBiomeAccessor, RandomSource pRandom, Aquifer pAquifer, ChunkPos pChunkPos, CarvingMask pCarvingMask) {
         if(!pChunk.getPos().equals(pChunkPos)) return false;
