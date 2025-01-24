@@ -1,0 +1,45 @@
+{
+  "type": "mia:abyss_central_hole",
+  "config": {
+    "probability": 1.0,
+    "y": {
+      "absolute": 0
+    },
+    "lava_level": {
+      "above_bottom": 0
+    },
+    "replaceable": "#minecraft:overworld_carver_replaceables",
+    "critical_radius": {
+      "-63": 192,
+      "-32": 192,
+      "-31": 200,
+      "0": 200,
+      "1": 208,
+      "32": 208,
+      "33": 216,
+      "64": 216,
+      "65": 224,
+      "96": 224,
+      "97": 232,
+      "128": 232,
+      "129": 240,
+      "160": 240,
+      "161": 248,
+      "192": 248,
+      "193": 256,
+      "224": 256,
+      "225": 264,
+      "256": 264
+    },
+    "yScale": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_exclusive": 0.9,
+        "min_inclusive": 0.1
+      }
+    },
+    "mix_width": 0,
+    "noise_horizontal_multiplier": 1,
+    "noise_vertical_multiplier": 1
+  }
+}
