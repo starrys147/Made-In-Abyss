@@ -1,9 +1,6 @@
 package com.altnoir.mia;
 
-import com.altnoir.mia.register.MIABlocks;
-import com.altnoir.mia.register.MIAEffects;
-import com.altnoir.mia.register.MIAItems;
-import com.altnoir.mia.register.MIATabs;
+import com.altnoir.mia.register.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
@@ -39,6 +36,8 @@ public class MIA
         MIABlocks.register(modEventBus);
         MIAItems.register(modEventBus);
         MIAEffects.register(modEventBus);
+        MIACarvers.register(modEventBus);
+        MIABiomeModifierConfig.register(modEventBus);
 
         // 注册我们感兴趣的服务器和其他游戏事件
         MinecraftForge.EVENT_BUS.register(this);
