@@ -24,6 +24,6 @@ public record CarverAdder(HolderSet<Biome> biomes, HolderSet<ConfiguredWorldCarv
 
     @Override
     public MapCodec<? extends BiomeModifier> codec() {
-        return MIABiomeModifierConfig.CARVER_ADDER_CODEC;
+        return MIABiomeModifierConfig.CARVER_ADDER_CODEC.get();
     }
 }
