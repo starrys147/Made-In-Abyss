@@ -15,7 +15,6 @@ public class MIABlockStatesProvider extends BlockStateProvider {
     @Override
     public void registerStatesAndModels() {
         blockWithItem(MIABlocks.EXAMPLE_BLOCK);
-        blockWithItem(MIABlocks.EXAMPLE_PORTAL_BLOCK);
         blockWithItem(MIABlocks.ALEXANDRITE_BLOCK);
     }
 

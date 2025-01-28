@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "mia:example_block"
-            ]
+            "items": "mia:example_block"
           }
         ]
       },
@@ -15,21 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mia:example_block"
+        "recipe": "mia:example_block_from_example_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_example_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_example_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mia:example_block"
+      "mia:example_block_from_example_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

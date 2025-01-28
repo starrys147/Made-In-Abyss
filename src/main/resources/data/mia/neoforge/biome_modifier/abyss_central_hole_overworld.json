@@ -1,5 +1,5 @@
 {
-  "type": "mia:carver_adder",
+  "type": "neoforge:add_carvers",
   "biomes": "#minecraft:is_overworld",
   "carvers": "mia:abyss_central_hole_overworld"
 }

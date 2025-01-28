@@ -35,7 +35,6 @@ public class MIA {
         MIAItems.register(modEventBus);
         MIAEffects.register(modEventBus);
         MIACarvers.register(modEventBus);
-        MIABiomeModifierConfig.register(modEventBus);
 
         // 注册我们感兴趣的服务器和其他游戏事件
         NeoForge.EVENT_BUS.register(this);
