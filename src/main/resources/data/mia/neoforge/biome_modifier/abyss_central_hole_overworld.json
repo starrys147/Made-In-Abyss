@@ -1,5 +1,6 @@
 {
   "type": "neoforge:add_carvers",
   "biomes": "#minecraft:is_overworld",
-  "carvers": "mia:abyss_central_hole_overworld"
+  "carvers": "mia:abyss_central_hole_overworld",
+  "step": "air"
 }
