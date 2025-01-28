@@ -3,10 +3,9 @@ package com.altnoir.mia.datagen;
 import com.altnoir.mia.MIA;
 import com.altnoir.mia.register.MIABlocks;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class MIABlockStatesProvider extends BlockStateProvider {
     public MIABlockStatesProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -20,7 +19,7 @@ public class MIABlockStatesProvider extends BlockStateProvider {
         blockWithItem(MIABlocks.ALEXANDRITE_BLOCK);
     }
 
-    private void blockWithItem(RegistryObject<Block> block) {
+    private void blockWithItem(DeferredBlock<?> block) {
         simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 }

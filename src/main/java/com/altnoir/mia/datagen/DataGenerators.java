@@ -1,11 +1,11 @@
 package com.altnoir.mia.datagen;
 
 import com.altnoir.mia.MIA;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@Mod.EventBusSubscriber(modid = MIA.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = MIA.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -14,7 +14,7 @@ public class DataGenerators {
         var existingFileHelper = event.getExistingFileHelper();
         var lookupProvider = event.getLookupProvider();
 
-        gen.addProvider(event.includeServer(), new MIARecipesProvider(packOutput));
+        gen.addProvider(event.includeServer(), new MIARecipesProvider(packOutput, lookupProvider));
         gen.addProvider(event.includeServer(), new MIABlockStatesProvider(packOutput, existingFileHelper));
         gen.addProvider(event.includeServer(), new MIAItemModelProvider(packOutput, existingFileHelper));
         gen.addProvider(event.includeServer(), new MIAWorldGenProvider(packOutput, lookupProvider));

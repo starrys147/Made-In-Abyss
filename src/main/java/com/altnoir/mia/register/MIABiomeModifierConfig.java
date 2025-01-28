@@ -4,21 +4,19 @@ import com.altnoir.mia.MIA;
 import com.altnoir.mia.content.worldgen.biomemodifier.CarverAdder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.data.worldgen.Carvers;
+import net.minecraft.core.Holder;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class MIABiomeModifierConfig {
-    public static DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS =
-            DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, MIA.MOD_ID);
+    public static DeferredRegister<BiomeModifier> BIOME_MODIFIER_SERIALIZERS =
+            DeferredRegister.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, MIA.MOD_ID);
 
-    public static RegistryObject<Codec<CarverAdder>> CARVER_ADDER_CODEC = BIOME_MODIFIER_SERIALIZERS.register("carver_adder", () ->
+    public static Holder<Codec<CarverAdder>> CARVER_ADDER_CODEC = BIOME_MODIFIER_SERIALIZERS.register("carver_adder", () ->
             RecordCodecBuilder.create(builder -> builder.group(
                     // declare fields
                     Biome.LIST_CODEC.fieldOf("biomes").forGetter(CarverAdder::biomes),

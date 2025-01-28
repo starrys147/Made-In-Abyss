@@ -1,25 +1,26 @@
 package com.altnoir.mia.datagen;
 
 import com.altnoir.mia.register.MIABlocks;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class MIARecipesProvider extends RecipeProvider implements IConditionBuilder {
-    public MIARecipesProvider(PackOutput p_248933_) {
-        super(p_248933_);
+    public MIARecipesProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
+        super(pOutput, pRegistries);
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(RecipeOutput recipeOutput) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MIABlocks.EXAMPLE_BLOCK.get(), 1)
                 .requires(MIABlocks.EXAMPLE_BLOCK.get())
                 .unlockedBy(getHasName(MIABlocks.EXAMPLE_BLOCK.get()), has(MIABlocks.EXAMPLE_BLOCK.get()))
-                .save(consumer);
+                .save(recipeOutput, "mia:example_block_from_example_block");
     }
 }

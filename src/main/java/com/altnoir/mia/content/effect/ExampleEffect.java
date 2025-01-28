@@ -9,8 +9,9 @@ public class ExampleEffect extends MIABaseEffect{
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier){
+    public boolean applyEffectTick(LivingEntity entity, int amplifier){
         super.applyEffectTick(entity, amplifier);
 
+        return true;
     }
 }

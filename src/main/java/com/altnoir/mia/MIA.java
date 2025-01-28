@@ -2,34 +2,32 @@ package com.altnoir.mia;
 
 import com.altnoir.mia.register.*;
 import com.mojang.logging.LogUtils;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
 // 此处的值应与 META-INF/mods.toml 文件中的条目匹配
 @Mod(MIA.MOD_ID)
-public class MIA
-{
+public class MIA {
     // 在所有地方定义一个通用的 mod id
     public static final String MOD_ID = "mia";
     // 直接引用一个 slf4j 日志记录器
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public MIA()
+    public MIA(IEventBus modEventBus, ModContainer modContainer)
     {
-        var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         // 注册 commonSetup 方法以进行模组加载
         modEventBus.addListener(this::commonSetup);
         MIATabs.register(modEventBus);
@@ -40,10 +38,10 @@ public class MIA
         MIABiomeModifierConfig.register(modEventBus);
 
         // 注册我们感兴趣的服务器和其他游戏事件
-        MinecraftForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(this);
 
         // 注册我们的 ForgeConfigSpec，以便 Forge 可以为我们创建和加载配置文件
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         //MinecraftForge.EVENT_BUS.register(new HoleGenerator());
     }
@@ -54,7 +52,7 @@ public class MIA
         LOGGER.info("来自通用设置的问候");
 
         if (Config.logDirtBlock)
-            LOGGER.info("泥土方块 >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+            LOGGER.info("泥土方块 >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
 
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
@@ -70,7 +68,7 @@ public class MIA
     }
 
     // 使用 EventBusSubscriber 自动注册类中所有带有 @SubscribeEvent 注解的静态方法
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
