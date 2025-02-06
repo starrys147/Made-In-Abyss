@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -88,9 +89,8 @@ public class MIA {
                 new ResourceLocation("mia", "alluring_forest"); // 维度ID
         private static final int Y_THRESHOLD = 10; // 诅咒触发高度
         private static final MobEffectInstance UPWARD_CURSE =
-                new MobEffectInstance(MobEffects.CONFUSION, 200, 0); // 诅咒效果
+                new MobEffectInstance(MobEffects.CONFUSION, 300, 0); // 诅咒效果
         private static int tickCounter = 0; // 添加计数器
-        private static int lowestY = Integer.MAX_VALUE; // 添加最低Y轴位置记录
 
         @SubscribeEvent
         public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -98,26 +98,35 @@ public class MIA {
                 tickCounter++; // 每tick增加计数器
 
                 if (tickCounter >= 60) { // 每3秒执行一次
-                    Player player = event.player; // 初始化player变量
+                    Player player = event.player;
                     ResourceLocation dimensionId = player.level().dimension().location();
-                    // LOGGER.info("玩家在 {} dimension", dimensionId);
+                    int playerY = (int) player.getY();
+                    var playerPD = player.getPersistentData();
+                    int lastY = playerPD.getInt("lastY");
+
+                    if (lastY == 0) {
+                        playerPD.putInt("lastY", playerY);
+                    }
+                    if (playerY < lastY) {
+                        playerPD.putInt("lastY", playerY);
+                    }
                     if (dimensionId.equals(ALLURING_FOREST_DIMENSION)) {
-                        int currentY = (int) player.getY();
-                        int previousY = player.getPersistentData().getInt("lastY");
-
-                        if (currentY < lowestY) {
-                            lowestY = currentY;
-                        }
-
-                        if (currentY - previousY >= Y_THRESHOLD) {
+                        if (playerY - lastY >= Y_THRESHOLD) {
                             player.addEffect(UPWARD_CURSE); // 施加诅咒效果
-                            player.getPersistentData().putInt("lastY", currentY);
-                            lowestY = currentY; // 更新Y轴位置
+                            playerPD.putInt("lastY", playerY);
                         }
                     }
+
+                    LOGGER.info("1Y: {}, 2Y: {}", playerY, lastY);
                     tickCounter = 0; // 重置计数器
                 }
             }
+        }
+        // 添加事件监听器，当玩家改变维度时，将 lastY 设置为当前高度
+        @SubscribeEvent
+        public static void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+            Player player = event.getEntity();
+            player.getPersistentData().putInt("lastY", (int) player.getY());
         }
     }
 }

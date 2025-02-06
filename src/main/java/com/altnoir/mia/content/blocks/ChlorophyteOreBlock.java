@@ -20,7 +20,7 @@ public class ChlorophyteOreBlock extends Block {
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextInt(25) > 1) return;
+        if (random.nextInt(50) > 1) return;
 
         for (Direction direction : Direction.values()) {
             BlockPos offsetPos = pos.relative(direction);
