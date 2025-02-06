@@ -1,5 +1,6 @@
-package com.altnoir.mia.content.items;
+package com.altnoir.mia.content.foods;
 
+import com.altnoir.mia.content.items.MIABaseItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 

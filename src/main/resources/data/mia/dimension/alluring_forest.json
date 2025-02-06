@@ -1,5 +1,5 @@
 {
-    "type": "mia:test",
+    "type": "mia:alluring_forest",
     "generator": {
         "type": "minecraft:noise",
         "biome_source": {
@@ -55,6 +55,6 @@
                 }
             ]
         },
-        "settings": "mia:test"
+        "settings": "mia:alluring_forest"
     }
 }

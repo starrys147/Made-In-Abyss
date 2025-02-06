@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "mia:block/alexandrite_block"
+      "model": "mia:block/chlorophyte_ore"
     }
   }
 }
