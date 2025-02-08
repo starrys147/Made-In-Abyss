@@ -3,15 +3,9 @@ package com.altnoir.mia;
 import com.altnoir.mia.register.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -45,12 +39,15 @@ public class MIA {
 
         // 注册我们感兴趣的服务器和其他游戏事件
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(UpwardCurse.EventHandler.class);
 
         // 注册我们的 ForgeConfigSpec，以便 Forge 可以为我们创建和加载配置文件
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         // MinecraftForge.EVENT_BUS.register(new HoleGenerator());
     }
+
+
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // 一些通用设置代码
@@ -79,54 +76,6 @@ public class MIA {
             // 一些客户端设置代码
             LOGGER.info("来自客户端设置的问候");
             LOGGER.info("MINECRAFT 名称 >> {}", Minecraft.getInstance().getUser().getName());
-        }
-    }
-
-    // 上升诅咒！
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-    public static class PlayerMovementEvents {
-        private static final ResourceLocation ALLURING_FOREST_DIMENSION =
-                new ResourceLocation("mia", "alluring_forest"); // 维度ID
-        private static final int Y_THRESHOLD = 10; // 诅咒触发高度
-        private static final MobEffectInstance UPWARD_CURSE =
-                new MobEffectInstance(MobEffects.CONFUSION, 300, 0); // 诅咒效果
-        private static int tickCounter = 0; // 添加计数器
-
-        @SubscribeEvent
-        public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-            if (event.phase == TickEvent.Phase.END) {
-                tickCounter++; // 每tick增加计数器
-
-                if (tickCounter >= 60) { // 每3秒执行一次
-                    Player player = event.player;
-                    ResourceLocation dimensionId = player.level().dimension().location();
-                    int playerY = (int) player.getY();
-                    var playerPD = player.getPersistentData();
-                    int lastY = playerPD.getInt("lastY");
-
-                    if (lastY == 0) {
-                        playerPD.putInt("lastY", playerY);
-                    }
-                    if (playerY < lastY) {
-                        playerPD.putInt("lastY", playerY);
-                    }
-                    if (dimensionId.equals(ALLURING_FOREST_DIMENSION)) {
-                        if (playerY - lastY >= Y_THRESHOLD) {
-                            player.addEffect(UPWARD_CURSE); // 施加诅咒效果
-                            playerPD.putInt("lastY", playerY);
-                        }
-                    }
-
-                    LOGGER.info("1Y: {}, 2Y: {}", playerY, lastY);
-                    tickCounter = 0; // 重置计数器
-                }
-            }
-        }
-        // 添加事件监听器，当玩家改变维度时，将 lastY 设置为当前高度
-        @SubscribeEvent
-        public static void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-            Player player = event.getEntity();
-            player.getPersistentData().putInt("lastY", (int) player.getY());
         }
     }
 }

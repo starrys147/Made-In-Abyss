@@ -11,19 +11,25 @@ import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nonnull;
 
-public class UpwardCurse {
-    private double lastY;
-    private double accumulatedRise;
+import static com.mojang.text2speech.Narrator.LOGGER;
 
-    public double getLastY() { return lastY; }
-    public void setLastY(double lastY) { this.lastY = lastY; }
-    public double getAccumulatedRise() { return accumulatedRise; }
-    public void setAccumulatedRise(double accumulatedRise) { this.accumulatedRise = accumulatedRise; }
+public class UpwardCurse {
+    private double lowestY;      // 记录最低Y坐标
+    private double checkY;       // 用于检查的高度
+    private int tickCounter;     // 计时器
+
+    public double getLowestY() { return lowestY; }
+    public void setLowestY(double y) { this.lowestY = y; }
+    public double getCheckY() { return checkY; }
+    public void setCheckY(double y) { this.checkY = y; }
+    public int getTickCounter() { return tickCounter; }
+    public void setTickCounter(int count) { this.tickCounter = count; }
 
     public static class Provider implements ICapabilitySerializable<CompoundTag> {
         public static final Capability<UpwardCurse> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
@@ -40,15 +46,17 @@ public class UpwardCurse {
         @Override
         public CompoundTag serializeNBT() {
             CompoundTag tag = new CompoundTag();
-            tag.putDouble("lastY", data.lastY);
-            tag.putDouble("accumulatedRise", data.accumulatedRise);
+            tag.putDouble("lowestY", data.lowestY);
+            tag.putDouble("checkY", data.checkY);
+            tag.putInt("tickCounter", data.tickCounter);
             return tag;
         }
 
         @Override
         public void deserializeNBT(CompoundTag nbt) {
-            data.lastY = nbt.getDouble("lastY");
-            data.accumulatedRise = nbt.getDouble("accumulatedRise");
+            data.lowestY = nbt.getDouble("lowestY");
+            data.checkY = nbt.getDouble("checkY");
+            data.tickCounter = nbt.getInt("tickCounter");
         }
     }
 
@@ -58,12 +66,22 @@ public class UpwardCurse {
         public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
             if (event.getObject() instanceof Player) {
                 event.addCapability(
-                        new ResourceLocation(MIA.MOD_ID, "rise_data"),
+                        new ResourceLocation(MIA.MOD_ID, "upward_curse"),
                         new Provider()
                 );
             }
         }
-
+        @SubscribeEvent
+        public static void onDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
+            Player player = event.getEntity();
+            player.getCapability(Provider.CAPABILITY).ifPresent(data -> {
+                // 切换维度重置高度
+                double currentY = player.getY();
+                data.setCheckY(currentY);
+                data.setLowestY(currentY);
+                data.setTickCounter(0);
+            });
+        }
         @SubscribeEvent
         public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
             if (event.phase == TickEvent.Phase.START) return;
@@ -72,19 +90,32 @@ public class UpwardCurse {
             if (player.level().isClientSide) return;
 
             player.getCapability(Provider.CAPABILITY).ifPresent(data -> {
+                // 计数器递增
+                int currentCount = data.getTickCounter() + 1;
+                data.setTickCounter(currentCount);
+
+                // 未到3秒时跳过
+                if (currentCount < 60) return;
+
+                // 到达3秒后重置并执行检查
+                data.setTickCounter(0);
                 double currentY = player.getY();
 
-                if (data.getLastY() == 0) {
-                    data.setLastY(currentY);
+                // 初始化基准高度
+                if (data.getCheckY() == 0) {
+                    data.setCheckY(currentY);
+                    data.setLowestY(currentY);
                     return;
                 }
 
-                double deltaY = currentY - data.getLastY();
-                if (deltaY > 0) {
-                    data.setAccumulatedRise(data.getAccumulatedRise() + deltaY);
+                // 更新最低点
+                if (currentY < data.getLowestY()) {
+                    data.setLowestY(currentY);
                 }
 
-                if (data.getAccumulatedRise() >= 10.0) {
+                // 计算相对高度
+                double relativeHeight = currentY - data.getLowestY();
+                if (relativeHeight >= 10.0) {
                     player.addEffect(new MobEffectInstance(
                             MobEffects.CONFUSION,
                             600,
@@ -92,10 +123,12 @@ public class UpwardCurse {
                             false,
                             true
                     ));
-                    data.setAccumulatedRise(data.getAccumulatedRise() - 10.0);
+                    // 重置基准高度
+                    data.setCheckY(currentY);
+                    data.setLowestY(currentY);
                 }
 
-                data.setLastY(currentY);
+                LOGGER.info("Height: " + relativeHeight);
             });
         }
     }
