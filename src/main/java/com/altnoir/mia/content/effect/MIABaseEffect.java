@@ -8,3 +8,5 @@ public class MIABaseEffect extends MobEffect {
         super(p_19451_, p_19452_);
     }
 }
+
+
