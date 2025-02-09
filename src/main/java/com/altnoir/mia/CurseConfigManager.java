@@ -13,10 +13,10 @@ import java.util.*;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
 
-public class EffectConfigManager {
+public class CurseConfigManager {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path CONFIG_PATH = FMLPaths.CONFIGDIR.get().resolve("mia/dimension_effects.json");
-    private static final Map<ResourceLocation, List<EffectConfig>> DIMENSION_EFFECTS = new HashMap<>();
+    private static final Path CONFIG_PATH = FMLPaths.CONFIGDIR.get().resolve("mia/dimension_curse.json");
+    private static final Map<ResourceLocation, List<EffectConfig>> DIMENSION_CURSE = new HashMap<>();
 
     public static class EffectConfig {
         public String id;
@@ -25,11 +25,43 @@ public class EffectConfigManager {
     }
 
     public static void loadConfig() {
-        DIMENSION_EFFECTS.clear();
+        DIMENSION_CURSE.clear();
         try {
             if (!Files.exists(CONFIG_PATH)) {
                 Files.createDirectories(CONFIG_PATH.getParent());
-                Files.write(CONFIG_PATH, Collections.singletonList("[]"));
+                // 创建默认配置的JSON内容
+                List<DimensionEntry> defaultEntries = new ArrayList<>();
+
+                // 示例配置
+                DimensionEntry alluringForest = new DimensionEntry();
+                alluringForest.dimension = "mia:alluring_forest";
+                alluringForest.effects = new ArrayList<>();
+                EffectConfig nausea = new EffectConfig();
+                nausea.id = "minecraft:nausea";
+                nausea.duration = 300;
+                nausea.amplifier = 0;
+                alluringForest.effects.add(nausea);
+                // 示例配置
+                DimensionEntry theEnd = new DimensionEntry();
+                theEnd.dimension = "minecraft:the_end";
+                theEnd.effects = new ArrayList<>();
+                EffectConfig blindness = new EffectConfig();
+                blindness.id = "minecraft:darkness";
+                blindness.duration = 600;
+                blindness.amplifier = 0;
+                EffectConfig slowness = new EffectConfig();
+                slowness.id = "minecraft:slowness";
+                slowness.duration = 600;
+                slowness.amplifier = 2;
+                theEnd.effects.add(blindness);
+                theEnd.effects.add(slowness);
+
+                defaultEntries.add(alluringForest);
+                defaultEntries.add(theEnd);
+
+                // 将默认配置写入文件
+                String defaultJson = GSON.toJson(defaultEntries);
+                Files.write(CONFIG_PATH, defaultJson.getBytes(StandardCharsets.UTF_8));
                 return;
             }
 
@@ -39,15 +71,15 @@ public class EffectConfigManager {
 
             for (DimensionEntry entry : entries) {
                 ResourceLocation dimId = new ResourceLocation(entry.dimension);
-                DIMENSION_EFFECTS.put(dimId, entry.effects);
+                DIMENSION_CURSE.put(dimId, entry.effects);
             }
         } catch (IOException e) {
-            LOGGER.error("Failed to load dimension effects config", e);
+            LOGGER.error("Failed to load dimension curse config", e);
         }
     }
 
     public static List<EffectConfig> getEffects(ResourceLocation dimensionId) {
-        return DIMENSION_EFFECTS.getOrDefault(dimensionId, Collections.emptyList());
+        return DIMENSION_CURSE.getOrDefault(dimensionId, Collections.emptyList());
     }
 
     public static class DimensionEntry {

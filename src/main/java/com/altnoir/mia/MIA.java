@@ -30,16 +30,20 @@ public class MIA {
 
         // 注册 commonSetup 方法以进行模组加载
         modEventBus.addListener(this::commonSetup);
+
         MIATabs.register(modEventBus);
         MIABlocks.register(modEventBus);
         MIAItems.register(modEventBus);
         MIAEffects.register(modEventBus);
+
         MIACarvers.register(modEventBus);
         MIABiomeModifierConfig.register(modEventBus);
 
+        CurseConfigManager.loadConfig();
+
         // 注册我们感兴趣的服务器和其他游戏事件
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(UpwardCurse.EventHandler.class);
+        MinecraftForge.EVENT_BUS.register(Curse.EventHandler.class);
 
         // 注册我们的 ForgeConfigSpec，以便 Forge 可以为我们创建和加载配置文件
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);

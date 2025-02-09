@@ -1,11 +1,9 @@
 package com.altnoir.mia;
 
-import com.altnoir.mia.register.MIAEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.*;
@@ -25,7 +23,7 @@ import java.util.List;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
 
-public class UpwardCurse {
+public class Curse {
     private double lowY;      // 记录最低Y坐标
     private double checkY;       // 用于检查的高度
 
@@ -36,10 +34,10 @@ public class UpwardCurse {
 
 
     public static class Provider implements ICapabilitySerializable<CompoundTag> {
-        public static final Capability<UpwardCurse> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+        public static final Capability<Curse> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
-        private final UpwardCurse data = new UpwardCurse();
-        private final LazyOptional<UpwardCurse> optional = LazyOptional.of(() -> data);
+        private final Curse data = new Curse();
+        private final LazyOptional<Curse> optional = LazyOptional.of(() -> data);
 
         @Nonnull
         @Override
@@ -85,51 +83,51 @@ public class UpwardCurse {
         }
         @SubscribeEvent
         public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-            if (event.phase == TickEvent.Phase.START) return;
-            Player player = event.player;
+            if (event.phase == TickEvent.Phase.END) {
+                Player player = event.player;
 
-            if (player.tickCount % 60 != 0) return;
-            if (player.level().isClientSide) return;
+                if (player.tickCount % 40 != 0) return;
+                if (player.level().isClientSide) return;
 
-            player.getCapability(Provider.CAPABILITY).ifPresent(data -> {
-                double nowY = player.getY();
-                if (data.getCheckY() == 0) {
-                    data.setCheckY(nowY);
-                    data.setLowY(nowY);
-                    return;
-                }
-
-                if (nowY < data.getLowY()) {
-                    data.setLowY(nowY);
-                }
-
-                double relativeHeight = nowY - data.getLowY();
-                LOGGER.info("Height: " + relativeHeight);
-
-                if (relativeHeight >= 10.0) {
-                    ResourceLocation dimensionId = player.level().dimension().location();
-                    List<EffectConfigManager.EffectConfig> effects = EffectConfigManager.getEffects(dimensionId);
-
-                    if (!effects.isEmpty()) {
-                        for (EffectConfigManager.EffectConfig config : effects) {
-                            MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(new ResourceLocation(config.id));
-                            if (effect != null && !player.hasEffect(effect)) { // 防止重复添加
-                                player.addEffect(new MobEffectInstance(
-                                        effect,
-                                        config.duration,
-                                        config.amplifier,
-                                        false,
-                                        true
-                                ));
-                            } else {
-                                LOGGER.warn("无效的药水效果ID: {}", config.id);
-                            }
-                        }
+                player.getCapability(Provider.CAPABILITY).ifPresent(data -> {
+                    double nowY = player.getY();
+                    if (data.getCheckY() == 0) {
                         data.setCheckY(nowY);
                         data.setLowY(nowY);
+                        return;
                     }
-                }
-            });
+
+                    if (nowY < data.getLowY()) {
+                        data.setLowY(nowY);
+                    }
+
+                    double relativeHeight = nowY - data.getLowY();
+                    LOGGER.info("Height: " + relativeHeight);
+
+                    if (relativeHeight >= 10.0) {
+                        ResourceLocation dimensionId = player.level().dimension().location();
+                        List<CurseConfigManager.EffectConfig> effects = CurseConfigManager.getEffects(dimensionId);
+
+                        if (!effects.isEmpty()) {
+                            for (CurseConfigManager.EffectConfig config : effects) {
+                                MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(new ResourceLocation(config.id));
+                                if (effect != null) {
+                                    player.addEffect(new MobEffectInstance(
+                                            effect,
+                                            config.duration,
+                                            config.amplifier,
+                                            false,
+                                            true
+                                    ));
+                                    LOGGER.warn("effectID: {}", config.id);
+                                }
+                            }
+                            data.setCheckY(nowY);
+                            data.setLowY(nowY);
+                        }
+                    }
+                });
+            }
         }
     }
 
@@ -138,7 +136,7 @@ public class UpwardCurse {
     public static class CapabilityRegistrar {
         @SubscribeEvent
         public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-            event.register(UpwardCurse.class);
+            event.register(Curse.class);
         }
     }
 }
