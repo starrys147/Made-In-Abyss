@@ -1,4 +1,4 @@
-package com.altnoir.mia.register;
+package com.altnoir.mia;
 
 import com.altnoir.mia.MIA;
 import com.altnoir.mia.content.worldgen.biomemodifier.CarverAdder;

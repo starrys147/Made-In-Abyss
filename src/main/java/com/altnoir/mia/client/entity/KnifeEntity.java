@@ -1,4 +1,4 @@
-package com.altnoir.mia.client;
+package com.altnoir.mia.client.entity;
 
 import com.altnoir.mia.MIAItems;
 import com.altnoir.mia.Time;
@@ -6,19 +6,15 @@ import com.altnoir.mia.content.EntityRegister;
 import com.altnoir.mia.content.SoundsRegister;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;

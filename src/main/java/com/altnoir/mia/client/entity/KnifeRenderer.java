@@ -1,4 +1,4 @@
-package com.altnoir.mia.client;
+package com.altnoir.mia.client.entity;
 
 import com.altnoir.mia.client.entity.KnifeEntity;
 import com.mojang.blaze3d.vertex.PoseStack;

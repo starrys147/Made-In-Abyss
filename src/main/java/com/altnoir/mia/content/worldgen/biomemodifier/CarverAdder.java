@@ -1,6 +1,6 @@
 package com.altnoir.mia.content.worldgen.biomemodifier;
 
-import com.altnoir.mia.register.MIABiomeModifierConfig;
+import com.altnoir.mia.MIABiomeModifierConfig;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;

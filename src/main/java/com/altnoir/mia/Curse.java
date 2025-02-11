@@ -86,7 +86,7 @@ public class Curse {
             if (event.phase == TickEvent.Phase.END) {
                 Player player = event.player;
 
-                if (player.tickCount % 40 != 0) return;
+                if (player.tickCount % 20 != 0) return;
                 if (player.level().isClientSide) return;
 
                 player.getCapability(Provider.CAPABILITY).ifPresent(data -> {

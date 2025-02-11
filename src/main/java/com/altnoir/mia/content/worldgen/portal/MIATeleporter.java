@@ -1,8 +1,7 @@
 package com.altnoir.mia.content.worldgen.portal;
 
-import com.altnoir.mia.content.blocks.MIABaseBlock;
 import com.altnoir.mia.content.blocks.MIABasePortalBlock;
-import com.altnoir.mia.register.MIABlocks;
+import com.altnoir.mia.MIABlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;

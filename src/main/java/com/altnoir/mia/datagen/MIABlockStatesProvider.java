@@ -1,7 +1,7 @@
 package com.altnoir.mia.datagen;
 
 import com.altnoir.mia.MIA;
-import com.altnoir.mia.register.MIABlocks;
+import com.altnoir.mia.MIABlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;

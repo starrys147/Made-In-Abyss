@@ -1,6 +1,5 @@
-package com.altnoir.mia.register;
+package com.altnoir.mia;
 
-import com.altnoir.mia.MIA;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -23,6 +22,8 @@ public class MIATabs {
                         pOutput.accept(MIABlocks.ALEXANDRITE_BLOCK.get());
                         pOutput.accept(MIAItems.PURIN.get());
                         pOutput.accept(MIAItems.ENDLESS_CUP.get());
+                        pOutput.accept(MIAItems.CLOCK.get());
+                        pOutput.accept(MIAItems.Knife.get());
                     })
                     .build());
 

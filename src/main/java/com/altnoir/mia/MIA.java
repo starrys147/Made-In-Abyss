@@ -1,12 +1,15 @@
 package com.altnoir.mia;
 
-import com.altnoir.mia.register.*;
+import com.altnoir.mia.content.EntityRegister;
+import com.altnoir.mia.client.entity.KnifeRenderer;
+import com.altnoir.mia.content.SoundsRegister;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +19,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 // 此处的值应与 META-INF/mods.toml 文件中的条目匹配
 @Mod(MIA.MOD_ID)
@@ -31,22 +38,28 @@ public class MIA {
         // 注册 commonSetup 方法以进行模组加载
         modEventBus.addListener(this::commonSetup);
 
-        MIATabs.register(modEventBus);
-        MIABlocks.register(modEventBus);
         MIAItems.register(modEventBus);
+        MIABlocks.register(modEventBus);
+        MIATabs.register(modEventBus);
         MIAEffects.register(modEventBus);
 
         MIACarvers.register(modEventBus);
         MIABiomeModifierConfig.register(modEventBus);
 
+        SoundsRegister.SOUNDS.register(modEventBus);
+        EntityRegister.ENTITIES.register(modEventBus);
+
         CurseConfigManager.loadConfig();
 
-        // 注册我们感兴趣的服务器和其他游戏事件
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(Curse.EventHandler.class);
 
-        // 注册我们的 ForgeConfigSpec，以便 Forge 可以为我们创建和加载配置文件
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        ScheduledExecutorService s = Executors.newSingleThreadScheduledExecutor();
+        s.scheduleAtFixedRate(() -> {
+            if (!Time.get()) Time.millis++;
+        }, 1, 1, TimeUnit.MILLISECONDS);
 
         // MinecraftForge.EVENT_BUS.register(new HoleGenerator());
     }
@@ -57,12 +70,14 @@ public class MIA {
         // 一些通用设置代码
         LOGGER.info("来自通用设置的问候");
 
-        if (Config.logDirtBlock)
-            LOGGER.info("泥土方块 >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+        EntityRenderers.register(EntityRegister.flyingSwordEntity.get(), KnifeRenderer::new);
 
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("物品 >> {}", item.toString()));
+//        if (Config.logDirtBlock)
+//            LOGGER.info("泥土方块 >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+//
+//        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
+//
+//        Config.items.forEach((item) -> LOGGER.info("物品 >> {}", item.toString()));
     }
 
     // 使用 SubscribeEvent 并让事件总线发现带有 @SubscribeEvent 注解的方法来调用

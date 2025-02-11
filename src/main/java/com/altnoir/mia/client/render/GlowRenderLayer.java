@@ -1,4 +1,4 @@
-package com.altnoir.mia.client;
+package com.altnoir.mia.client.render;
 
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.systems.RenderSystem;
