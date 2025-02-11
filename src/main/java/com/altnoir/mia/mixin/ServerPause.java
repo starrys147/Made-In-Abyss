@@ -12,7 +12,7 @@ import java.util.function.BooleanSupplier;
 
 
 @Mixin(IntegratedServer.class)
-public class Serverpause {
+public class Serverause {
     @Shadow
     private boolean paused;
 
