@@ -1,7 +1,6 @@
 package com.altnoir.mia;
 
 import com.altnoir.mia.content.AreaParticle;
-import com.altnoir.mia.content.SoundsRegister;
 import com.altnoir.mia.client.RendererUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Timer;

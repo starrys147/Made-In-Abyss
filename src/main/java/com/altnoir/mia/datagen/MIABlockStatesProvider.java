@@ -1,7 +1,7 @@
 package com.altnoir.mia.datagen;
 
 import com.altnoir.mia.MIA;
-import com.altnoir.mia.MIABlocks;
+import com.altnoir.mia.BlocksRegister;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -15,9 +15,9 @@ public class MIABlockStatesProvider extends BlockStateProvider {
 
     @Override
     public void registerStatesAndModels() {
-        blockWithItem(MIABlocks.EXAMPLE_BLOCK);
-        blockWithItem(MIABlocks.EXAMPLE_PORTAL_BLOCK);
-        blockWithItem(MIABlocks.ALEXANDRITE_BLOCK);
+        blockWithItem(BlocksRegister.EXAMPLE_BLOCK);
+        blockWithItem(BlocksRegister.EXAMPLE_PORTAL_BLOCK);
+        blockWithItem(BlocksRegister.ALEXANDRITE_BLOCK);
     }
 
     private void blockWithItem(RegistryObject<Block> block) {

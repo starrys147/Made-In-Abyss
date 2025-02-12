@@ -1,11 +1,10 @@
 package com.altnoir.mia;
 
-import com.altnoir.mia.content.EntityRegister;
 import com.altnoir.mia.client.entity.KnifeRenderer;
-import com.altnoir.mia.content.SoundsRegister;
+import com.altnoir.mia.content.worldgen.MIABiomeModifierConfig;
+import com.altnoir.mia.content.worldgen.MIACarvers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -17,7 +16,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 import java.util.concurrent.Executors;
@@ -38,10 +36,10 @@ public class MIA {
         // 注册 commonSetup 方法以进行模组加载
         modEventBus.addListener(this::commonSetup);
 
-        MIAItems.register(modEventBus);
-        MIABlocks.register(modEventBus);
-        MIATabs.register(modEventBus);
-        MIAEffects.register(modEventBus);
+        ItemsRegister.register(modEventBus);
+        BlocksRegister.register(modEventBus);
+        CreativeTabsRegister.register(modEventBus);
+        EffectsRegister.register(modEventBus);
 
         MIACarvers.register(modEventBus);
         MIABiomeModifierConfig.register(modEventBus);

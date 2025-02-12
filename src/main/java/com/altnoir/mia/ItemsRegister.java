@@ -1,6 +1,8 @@
 package com.altnoir.mia;
 
 import com.altnoir.mia.content.foods.Purin;
+import com.altnoir.mia.content.items.ClockItem;
+import com.altnoir.mia.content.items.KnifeItem;
 import com.altnoir.mia.content.items.relics.t1.UnlimitedWaterBucket;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -11,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class MIAItems {
+public class ItemsRegister {
     private static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MIA.MOD_ID);
 

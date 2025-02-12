@@ -1,6 +1,6 @@
 package com.altnoir.mia.mixin;
 
-import com.altnoir.mia.ClockItem;
+import com.altnoir.mia.content.items.ClockItem;
 import com.altnoir.mia.Time;
 import com.altnoir.mia.content.RenderEvent;
 import com.mojang.blaze3d.platform.Window;

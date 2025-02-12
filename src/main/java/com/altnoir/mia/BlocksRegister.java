@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-public class MIABlocks {
+public class BlocksRegister {
     private static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, MIA.MOD_ID);
 
     public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block", ExampleBlock::new);
@@ -33,7 +33,7 @@ public class MIABlocks {
     }
 
     private static <T extends Block> void registerBlockItem(final String name, final RegistryObject<T> block) {
-        MIAItems.registerBlockItem(name, block);
+        ItemsRegister.registerBlockItem(name, block);
     }
 
     public static void register(IEventBus modEventBus) {

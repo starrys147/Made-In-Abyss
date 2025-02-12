@@ -1,9 +1,9 @@
 package com.altnoir.mia.client.entity;
 
-import com.altnoir.mia.MIAItems;
+import com.altnoir.mia.ItemsRegister;
 import com.altnoir.mia.Time;
-import com.altnoir.mia.content.EntityRegister;
-import com.altnoir.mia.content.SoundsRegister;
+import com.altnoir.mia.EntityRegister;
+import com.altnoir.mia.SoundsRegister;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -75,6 +75,6 @@ public class KnifeEntity extends Arrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        return new ItemStack(MIAItems.Knife.get());
+        return new ItemStack(ItemsRegister.Knife.get());
     }
 }

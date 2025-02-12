@@ -1,5 +1,6 @@
-package com.altnoir.mia;
+package com.altnoir.mia.content.items;
 
+import com.altnoir.mia.Time;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;

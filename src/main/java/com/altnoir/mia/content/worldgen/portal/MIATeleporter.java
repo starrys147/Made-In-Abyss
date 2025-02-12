@@ -1,7 +1,7 @@
 package com.altnoir.mia.content.worldgen.portal;
 
 import com.altnoir.mia.content.blocks.MIABasePortalBlock;
-import com.altnoir.mia.MIABlocks;
+import com.altnoir.mia.BlocksRegister;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -53,7 +53,7 @@ public class MIATeleporter implements ITeleporter {
                 }
             }
             if (doSetBlock) {
-                destinationWorld.setBlock(destinationPos, MIABlocks.EXAMPLE_PORTAL_BLOCK.get().defaultBlockState(), 3);
+                destinationWorld.setBlock(destinationPos, BlocksRegister.EXAMPLE_PORTAL_BLOCK.get().defaultBlockState(), 3);
             }
         }
 

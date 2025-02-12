@@ -1,7 +1,7 @@
 package com.altnoir.mia.client;
 
 import com.altnoir.mia.MIA;
-import com.altnoir.mia.MIAEffects;
+import com.altnoir.mia.EffectsRegister;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
@@ -20,7 +20,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void onRenderLivingPre(RenderLivingEvent.Pre<?, ?> event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player == null || !mc.player.hasEffect(MIAEffects.PERSPECTIVE.get())) {
+        if (mc.player == null || !mc.player.hasEffect(EffectsRegister.PERSPECTIVE.get())) {
             entityScaleStartTimes.clear();
             return;
         }
@@ -46,7 +46,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void onRenderLivingPost(RenderLivingEvent.Post<?, ?> event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player != null && mc.player.hasEffect(MIAEffects.PERSPECTIVE.get())) {
+        if (mc.player != null && mc.player.hasEffect(EffectsRegister.PERSPECTIVE.get())) {
             event.getPoseStack().popPose();
         }
     }

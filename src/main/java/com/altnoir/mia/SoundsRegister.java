@@ -1,4 +1,4 @@
-package com.altnoir.mia.content;
+package com.altnoir.mia;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;

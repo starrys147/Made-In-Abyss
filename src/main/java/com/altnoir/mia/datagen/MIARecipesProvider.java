@@ -1,6 +1,6 @@
 package com.altnoir.mia.datagen;
 
-import com.altnoir.mia.MIABlocks;
+import com.altnoir.mia.BlocksRegister;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -17,9 +17,9 @@ public class MIARecipesProvider extends RecipeProvider implements IConditionBuil
 
     @Override
     public void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MIABlocks.EXAMPLE_BLOCK.get(), 1)
-                .requires(MIABlocks.EXAMPLE_BLOCK.get())
-                .unlockedBy(getHasName(MIABlocks.EXAMPLE_BLOCK.get()), has(MIABlocks.EXAMPLE_BLOCK.get()))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlocksRegister.EXAMPLE_BLOCK.get(), 1)
+                .requires(BlocksRegister.EXAMPLE_BLOCK.get())
+                .unlockedBy(getHasName(BlocksRegister.EXAMPLE_BLOCK.get()), has(BlocksRegister.EXAMPLE_BLOCK.get()))
                 .save(consumer);
     }
 }
