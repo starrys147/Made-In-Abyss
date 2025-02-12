@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class EntityRegister {
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "megatimestop");
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "mia");
     public static final RegistryObject<EntityType<KnifeEntity>> flyingSwordEntity = ENTITIES.register("flying_sword", () -> EntityType.Builder.of(KnifeEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(25).build("flying_sword"));
 
 }
