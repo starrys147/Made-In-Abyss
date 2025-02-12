@@ -10,11 +10,7 @@
     "ServerMixin"
   ],
   "client": [
-    "CameraMixin",
-    "GameRendererMixin",
-    "MinecraftMixin",
-    "RenderStateShardMixin",
-    "ServerPause"
+
   ],
   "injectors": {
     "defaultRequire": 1

@@ -25,7 +25,7 @@ public class ClockItem extends Item {
 
         if (p_41433_.level().isClientSide)
             Time.abs(p_41433_);
-        p_41433_.getCooldowns().addCooldown(this, 30);
+        p_41433_.getCooldowns().addCooldown(this, 10); //物品冷却时间
         return super.use(p_41432_, p_41433_, p_41434_);
     }
 

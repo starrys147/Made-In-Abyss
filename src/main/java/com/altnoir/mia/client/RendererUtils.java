@@ -59,7 +59,7 @@ public class RendererUtils {
     }
 
 
-    public static void particleRenders(Entity re, PoseStack matrix, float partialTicks) {
+    public static void particleRenders(PoseStack matrix, float partialTicks) {
         Vec3 proj = (Minecraft.getInstance()).gameRenderer.getMainCamera().getPosition();
         double d3 = proj.x;
         double d4 = proj.y;
@@ -99,7 +99,7 @@ public class RendererUtils {
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
             Entity re = Minecraft.getInstance().getCameraEntity();
             if (re != null) {
-                RendererUtils.particleRenders(re, event.getPoseStack(), event.getPartialTick());
+                RendererUtils.particleRenders(event.getPoseStack(), event.getPartialTick());
 
             }
         }
