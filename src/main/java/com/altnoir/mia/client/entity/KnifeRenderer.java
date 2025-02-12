@@ -21,7 +21,7 @@ public class KnifeRenderer extends EntityRenderer<KnifeEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(KnifeEntity p_114482_) {
-        return new ResourceLocation("megatimestop", "textures/entity/knife.png");
+        return new ResourceLocation("mia", "textures/entity/knife.png");
     }
 
     @Override

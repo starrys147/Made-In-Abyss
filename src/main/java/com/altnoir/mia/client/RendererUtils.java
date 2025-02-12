@@ -29,7 +29,7 @@ import java.util.Queue;
 @Mod.EventBusSubscriber
 public class RendererUtils {
 
-    public static final ResourceLocation beam = new ResourceLocation("megatimestop:textures/item/white.png");
+    public static final ResourceLocation beam = new ResourceLocation("mia:textures/item/white.png");
 
     static Map<ParticleRenderType, Queue<Particle>> ps = null;
 
