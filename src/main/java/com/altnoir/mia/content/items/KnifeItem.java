@@ -2,7 +2,6 @@ package com.altnoir.mia;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.altnoir.mia.content.SoundsRegister;
 import com.altnoir.mia.client.entity.KnifeEntity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
