@@ -26,9 +26,8 @@ import org.slf4j.Logger;
 public class SeventhCrucibleEntity extends BlockEntity {
     private final FluidTank fluidTank;
     private final LazyOptional<IFluidHandler> handler;
-    private int capacity = 4000;
-    public int FILL_CD = 3 * 20;
-    public int FILL_LAVA = 100;
+    private int capacity = 1000;
+    public int FILL_LAVA = 1;
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -65,10 +64,6 @@ public class SeventhCrucibleEntity extends BlockEntity {
 
     public int getCapacity() {
         return capacity;
-    }
-
-    public int getFillCd(){
-        return FILL_CD;
     }
 
     public int getFillLava(){
@@ -130,7 +125,7 @@ public class SeventhCrucibleEntity extends BlockEntity {
     }
 
     public static void serverTick(Level pLevel, BlockPos pPos, BlockState pBlockState, BlockEntity pBlockEntity) {
-        if (pBlockEntity instanceof SeventhCrucibleEntity seventhCrucibleEntity && pLevel.getServer().getTickCount() % seventhCrucibleEntity.getFillCd() == 0) {
+        if (pBlockEntity instanceof SeventhCrucibleEntity seventhCrucibleEntity) {
             FluidStack fluidStack = new FluidStack(Fluids.LAVA, seventhCrucibleEntity.getFillLava());
             seventhCrucibleEntity.fluidTank.fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
         }

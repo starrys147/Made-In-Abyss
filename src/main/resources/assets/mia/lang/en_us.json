@@ -3,8 +3,12 @@
   "item.mia.purin": "Purin",
   "item.mia.endless_cup": "Endless Cup",
 
-  "block.mia.alexandrite_block": "Alexandrite Block",
+  "block.mia.grass_block_d1": "Grass Block",
+  "block.mia.covergrass_cobblestone": "Covergrass Cobblestone",
+  "block.mia.covergrass_andesite": "Covergrass Andesite",
+  "block.mia.covergrass_deepslate": "Covergrass Deepslate",
   "block.mia.chlorophyte_ore": "Chlorophyte Ore",
+  "block.mia.seventh_crucible_block": "Seventh Crucible Block",
 
   "block.mia.example_block": "Example Block",
   "block.mia.example_portal_block": "Example Portal Block"

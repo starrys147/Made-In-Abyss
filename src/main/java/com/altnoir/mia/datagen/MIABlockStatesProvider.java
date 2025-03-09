@@ -17,7 +17,6 @@ public class MIABlockStatesProvider extends BlockStateProvider {
     public void registerStatesAndModels() {
         blockWithItem(BlocksRegister.EXAMPLE_BLOCK);
         blockWithItem(BlocksRegister.EXAMPLE_PORTAL_BLOCK);
-        blockWithItem(BlocksRegister.ALEXANDRITE_BLOCK);
     }
 
     private void blockWithItem(RegistryObject<Block> block) {

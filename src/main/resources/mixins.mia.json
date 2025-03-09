@@ -10,7 +10,6 @@
     "ServerMixin"
   ],
   "client": [
-
   ],
   "injectors": {
     "defaultRequire": 1

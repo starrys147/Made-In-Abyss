@@ -18,8 +18,12 @@ public class CreativeTabsRegister {
                     .title(Component.translatable("itemGroup.mia.mia"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(Blocks.SPAWNER);
+                        pOutput.accept(BlocksRegister.GRASS_BLOCK_D1.get());
+                        pOutput.accept(BlocksRegister.COVERGRASS_COBBLESTONE.get());
+                        pOutput.accept(BlocksRegister.COVERGRASS_ANDESITE.get());
+                        pOutput.accept(BlocksRegister.COVERGRASS_DEEPSLATE.get());
                         pOutput.accept(BlocksRegister.CHLOROPHTRE_ORE.get());
-                        pOutput.accept(BlocksRegister.ALEXANDRITE_BLOCK.get());
+                        pOutput.accept(BlocksRegister.SEVENTH_CRUCIBLE_BLOCK.get());
                         pOutput.accept(ItemsRegister.PURIN.get());
                         pOutput.accept(ItemsRegister.ENDLESS_CUP.get());
                         pOutput.accept(ItemsRegister.CLOCK.get());

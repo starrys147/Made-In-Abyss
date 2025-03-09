@@ -67,6 +67,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     maven { name = "TerraformersMC"; url = "https://maven.terraformersmc.com/" }
     maven { url = "https://maven.ryanliptak.com/" }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
@@ -81,6 +87,7 @@ dependencies {
 
     // 开发工具
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
     implementation 'com.google.code.gson:gson:2.8.9' // JSON处理库
 }
 

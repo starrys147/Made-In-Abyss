@@ -26,7 +26,7 @@ public class ChlorophyteOreBlock extends Block {
             BlockPos offsetPos = pos.relative(direction);
             BlockState offsetState = level.getBlockState(offsetPos);
 
-            if (offsetState.is(Blocks.MOSS_BLOCK)) {
+            if (offsetState.is(Blocks.MUD)) {
                 level.setBlock(offsetPos, state, 3);
                 break;
             }

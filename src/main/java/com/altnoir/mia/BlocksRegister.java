@@ -22,15 +22,18 @@ public class BlocksRegister {
     public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block", ExampleBlock::new);
     public static final RegistryObject<Block> EXAMPLE_PORTAL_BLOCK = registerBlock("example_portal_block",
             ExamplePortalBlock::new);
-    public static final RegistryObject<Block> ALEXANDRITE_BLOCK = registerBlock("alexandrite_block",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).sound(SoundType.NETHERITE_BLOCK)));
+    public static final RegistryObject<Block> GRASS_BLOCK_D1 = registerBlock("grass_block_d1",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> COVERGRASS_COBBLESTONE = registerBlock("covergrass_cobblestone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> COVERGRASS_ANDESITE = registerBlock("covergrass_andesite",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> COVERGRASS_DEEPSLATE = registerBlock("covergrass_deepslate",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(SoundType.DEEPSLATE)));
     public static final RegistryObject<Block> CHLOROPHTRE_ORE = registerBlock("chlorophyte_ore",
             () -> new ChlorophyteOreBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.NETHERRACK)));
-
-    public static final RegistryObject<Block> SEVENTH_CRUCIBLE_BLOCK = registerBlock(
-            "seventh_crucible_block",
-            () -> new SeventhCrucibleBlock(BlockBehaviour.Properties.copy(Blocks.STONE))
-    );
+    public static final RegistryObject<Block> SEVENTH_CRUCIBLE_BLOCK = registerBlock("seventh_crucible_block",
+            () -> new SeventhCrucibleBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).sound(SoundType.NETHERITE_BLOCK)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(final String name, final Supplier<T> block) {
         var toReturn = REGISTER.register(name, block);
