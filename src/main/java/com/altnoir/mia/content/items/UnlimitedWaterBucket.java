@@ -1,6 +1,5 @@
-package com.altnoir.mia.content.items.relics.t1;
+package com.altnoir.mia.content.items;
 
-import com.altnoir.mia.content.items.base.UnlimitedBucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 

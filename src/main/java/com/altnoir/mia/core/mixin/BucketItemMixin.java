@@ -1,4 +1,4 @@
-package com.altnoir.mia.mixin;
+package com.altnoir.mia.core.mixin;
 
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.level.material.Fluid;

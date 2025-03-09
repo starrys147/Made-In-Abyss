@@ -1,6 +1,6 @@
-package com.altnoir.mia.content.items.base;
+package com.altnoir.mia.content.items;
 
-import com.altnoir.mia.mixin.BucketItemMixin;
+import com.altnoir.mia.core.mixin.BucketItemMixin;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,8 +27,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Supplier;
 
 public class UnlimitedBucketItem extends BucketItem {
     public int defaultRechargeTime;

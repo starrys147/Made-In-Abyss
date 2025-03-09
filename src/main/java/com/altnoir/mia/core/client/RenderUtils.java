@@ -1,4 +1,4 @@
-package com.altnoir.mia.client;
+package com.altnoir.mia.core.client;
 
 import com.altnoir.mia.content.AreaParticle;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -27,11 +27,22 @@ import java.util.Map;
 import java.util.Queue;
 
 @Mod.EventBusSubscriber
-public class RendererUtils {
+public class RenderUtils {
 
     public static final ResourceLocation beam = new ResourceLocation("mia:textures/item/white.png");
 
     static Map<ParticleRenderType, Queue<Particle>> ps = null;
+
+    private static final double BASE_DISTANCE = 5.0;
+
+    public static double calculateScale(Entity entity) {
+        Minecraft mc = Minecraft.getInstance();
+        Vec3 cameraPos = mc.gameRenderer.getMainCamera().getPosition();
+        Vec3 entityPos = entity.position();
+        double distance = cameraPos.distanceTo(entityPos);
+        double scale = distance / BASE_DISTANCE;
+        return Math.max(scale, 1);
+    }
 
     public static void renderSphere(PoseStack matrix, MultiBufferSource buf, float radius, int gradation, int lx, int ly, float r, float g, float b, float a, RenderType type, float percentage) {
         float PI = 3.141592653589792F;
@@ -99,7 +110,7 @@ public class RendererUtils {
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
             Entity re = Minecraft.getInstance().getCameraEntity();
             if (re != null) {
-                RendererUtils.particleRenders(event.getPoseStack(), event.getPartialTick());
+                RenderUtils.particleRenders(event.getPoseStack(), event.getPartialTick());
 
             }
         }

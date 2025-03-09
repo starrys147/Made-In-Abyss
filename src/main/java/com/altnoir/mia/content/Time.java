@@ -1,7 +1,7 @@
-package com.altnoir.mia;
+package com.altnoir.mia.content;
 
-import com.altnoir.mia.content.AreaParticle;
-import com.altnoir.mia.client.RendererUtils;
+import com.altnoir.mia.SoundsRegister;
+import com.altnoir.mia.core.client.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Timer;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +16,7 @@ public class Time {
     public static void abs(Player e) {
         if (!Time.get()) {
             e.playSound(SoundsRegister.STOP.get(), 1f, 1f);
-            AreaParticle p = new AreaParticle((Minecraft.getInstance()).level, e.getX(), e.getY(), e.getZ(), 0.4F, 0.0D, 0.0D, 0.0D, RendererUtils.beam.toString(), 0.62F, 0.3F, 0.3F, 0.3F, 0.4F, false, 1.4d) {
+            AreaParticle p = new AreaParticle((Minecraft.getInstance()).level, e.getX(), e.getY(), e.getZ(), 0.4F, 0.0D, 0.0D, 0.0D, RenderUtils.beam.toString(), 0.62F, 0.3F, 0.3F, 0.3F, 0.4F, false, 1.4d) {
                 @Override
                 public Vec3 getPos() {
                     return e.position();

@@ -1,6 +1,6 @@
-package com.altnoir.mia.mixin;
+package com.altnoir.mia.core.mixin;
 
-import com.altnoir.mia.Time;
+import com.altnoir.mia.content.Time;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

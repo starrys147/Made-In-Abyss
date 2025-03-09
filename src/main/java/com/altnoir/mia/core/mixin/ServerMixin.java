@@ -1,6 +1,6 @@
-package com.altnoir.mia.mixin;
+package com.altnoir.mia.core.mixin;
 
-import com.altnoir.mia.Time;
+import com.altnoir.mia.content.Time;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;

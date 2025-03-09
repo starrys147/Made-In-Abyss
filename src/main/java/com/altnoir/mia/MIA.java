@@ -1,8 +1,8 @@
 package com.altnoir.mia;
 
 import com.altnoir.mia.client.entity.KnifeRenderer;
-import com.altnoir.mia.content.worldgen.MIABiomeModifierConfig;
-import com.altnoir.mia.content.worldgen.MIACarvers;
+import com.altnoir.mia.content.Curse;
+import com.altnoir.mia.content.Time;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -41,9 +41,6 @@ public class MIA {
         BlockEntityRegister.register(modEventBus);
         CreativeTabsRegister.register(modEventBus);
         EffectsRegister.register(modEventBus);
-
-        MIACarvers.register(modEventBus);
-        MIABiomeModifierConfig.register(modEventBus);
 
         SoundsRegister.SOUNDS.register(modEventBus);
         EntityRegister.ENTITIES.register(modEventBus);

@@ -3,7 +3,7 @@ package com.altnoir.mia;
 import com.altnoir.mia.content.foods.Purin;
 import com.altnoir.mia.content.items.ClockItem;
 import com.altnoir.mia.content.items.KnifeItem;
-import com.altnoir.mia.content.items.relics.t1.UnlimitedWaterBucket;
+import com.altnoir.mia.content.items.UnlimitedWaterBucket;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;

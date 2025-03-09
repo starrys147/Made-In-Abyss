@@ -2,6 +2,7 @@ package com.altnoir.mia.client;
 
 import com.altnoir.mia.MIA;
 import com.altnoir.mia.EffectsRegister;
+import com.altnoir.mia.core.client.RenderUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;

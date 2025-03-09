@@ -1,7 +1,7 @@
 package com.altnoir.mia.client.entity;
 
 import com.altnoir.mia.ItemsRegister;
-import com.altnoir.mia.Time;
+import com.altnoir.mia.content.Time;
 import com.altnoir.mia.EntityRegister;
 import com.altnoir.mia.SoundsRegister;
 import net.minecraft.core.BlockPos;

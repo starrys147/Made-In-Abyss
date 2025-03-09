@@ -1,6 +1,6 @@
 package com.altnoir.mia.content;
 
-import com.altnoir.mia.client.RendererUtils;
+import com.altnoir.mia.core.client.RenderUtils;
 import com.altnoir.mia.client.render.CullWrappedRenderLayer;
 import com.altnoir.mia.client.render.GlowRenderLayer;
 import com.altnoir.mia.client.render.MegaRenderType;
@@ -68,7 +68,7 @@ public class AreaParticle extends Particle {
             ResourceLocation loc = new ResourceLocation(particle.loc);
             GlowRenderLayer glowRenderLayer = new GlowRenderLayer(new CullWrappedRenderLayer(MegaRenderType.createSphereRenderType(loc, 0)), particle.rgba, particle.softness, particle.shaders);
             double size = particle.growing ? Math.max(0.0D, particle.sz - particle.grow + particle.grow * partialTicks) : Math.max(0.0D, particle.sz + particle.grow - particle.grow * partialTicks);
-            RendererUtils.renderSphere(matrix, buf, (float) size, 20, 240, 240, r, g, b, a, glowRenderLayer);
+            RenderUtils.renderSphere(matrix, buf, (float) size, 20, 240, 240, r, g, b, a, glowRenderLayer);
             //RendererUtils.renderSphere(matrix, buf, 0.00001F, 20, 240, 240, r, g, b, a, RenderType.glint());
             buf.endBatch(glowRenderLayer);
         }
