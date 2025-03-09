@@ -1,0 +1,9 @@
+{
+  "parent": "mia:block/grass_block_d1",
+  "textures": {
+    "particle": "block/cobblestone",
+    "bottom": "block/cobblestone",
+    "top": "mia:block/grass_block_top_d1",
+    "side": "mia:block/covergrass_cobblestone"
+  }
+}
