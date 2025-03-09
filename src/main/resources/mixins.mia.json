@@ -1,13 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.altnoir.mia.mixin",
+  "package": "com.altnoir.mia.core.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "mixins.mia.refmap.json",
   "mixins": [
-    "com.altnoir.mia.core.mixin.BucketItemMixin",
-    "com.altnoir.mia.core.mixin.LivingEntityMixin",
-    "com.altnoir.mia.core.mixin.ServerMixin"
+    "BucketItemMixin",
+    "LivingEntityMixin",
+    "ServerMixin"
   ],
   "client": [
   ],
