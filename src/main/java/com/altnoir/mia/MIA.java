@@ -61,13 +61,9 @@ public class MIA {
         // MinecraftForge.EVENT_BUS.register(new HoleGenerator());
     }
 
-
-
     private void commonSetup(final FMLCommonSetupEvent event) {
         // 一些通用设置代码
         LOGGER.info("来自通用设置的问候");
-
-        EntityRenderers.register(EntityRegister.flyingSwordEntity.get(), KnifeRenderer::new);
 
 //        if (Config.logDirtBlock)
 //            LOGGER.info("泥土方块 >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
@@ -92,6 +88,8 @@ public class MIA {
             // 一些客户端设置代码
             LOGGER.info("来自客户端设置的问候");
             LOGGER.info("MINECRAFT 名称 >> {}", Minecraft.getInstance().getUser().getName());
+
+            EntityRenderers.register(EntityRegister.flyingSwordEntity.get(), KnifeRenderer::new);
         }
     }
 }
