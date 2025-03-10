@@ -33,14 +33,19 @@ public class CurseConfigManager {
                 List<DimensionEntry> defaultEntries = new ArrayList<>();
 
                 // 示例配置
-                DimensionEntry OW = new DimensionEntry();
-                OW.dimension = "minecraft:overworld";
-                OW.effects = new ArrayList<>();
+                DimensionEntry AB = new DimensionEntry();
+                AB.dimension = "mia:abyss_brink";
+                AB.effects = new ArrayList<>();
                 EffectConfig nausea = new EffectConfig();
                 nausea.id = "minecraft:nausea";
-                nausea.duration = 300;
+                nausea.duration = 200;
                 nausea.amplifier = 0;
-                OW.effects.add(nausea);
+                EffectConfig blindness = new EffectConfig();
+                blindness.id = "minecraft:blindness";
+                blindness.duration = 40;
+                blindness.amplifier = 0;
+                AB.effects.add(nausea);
+                AB.effects.add(blindness);
 
                 DimensionEntry AF = new DimensionEntry();
                 AF.dimension = "mia:alluring_forest";
@@ -49,14 +54,19 @@ public class CurseConfigManager {
                 nausea2.id = "minecraft:nausea";
                 nausea2.duration = 600;
                 nausea2.amplifier = 0;
+                EffectConfig blindness2 = new EffectConfig();
+                blindness2.id = "minecraft:blindness";
+                blindness2.duration = 100;
+                blindness2.amplifier = 0;
                 EffectConfig perspective = new EffectConfig();
                 perspective.id = "mia:perspective";
                 perspective.duration = 600;
                 perspective.amplifier = 0;
                 AF.effects.add(nausea2);
+                AF.effects.add(blindness2);
                 AF.effects.add(perspective);
 
-                defaultEntries.add(OW);
+                defaultEntries.add(AB);
                 defaultEntries.add(AF);
 
                 // 将默认配置写入文件

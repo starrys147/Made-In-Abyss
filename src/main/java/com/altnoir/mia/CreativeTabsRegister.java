@@ -23,11 +23,10 @@ public class CreativeTabsRegister {
                         pOutput.accept(BlocksRegister.COVERGRASS_ANDESITE.get());
                         pOutput.accept(BlocksRegister.COVERGRASS_DEEPSLATE.get());
                         pOutput.accept(BlocksRegister.CHLOROPHTRE_ORE.get());
-                        pOutput.accept(BlocksRegister.SEVENTH_CRUCIBLE_BLOCK.get());
+                        pOutput.accept(BlocksRegister.VOLCANO_CRUCIBLE.get());
                         pOutput.accept(ItemsRegister.PURIN.get());
                         pOutput.accept(ItemsRegister.ENDLESS_CUP.get());
-                        pOutput.accept(ItemsRegister.CLOCK.get());
-                        pOutput.accept(ItemsRegister.KNIFE.get());
+                        pOutput.accept(ItemsRegister.UNHEARD_BELL.get());
                     })
                     .build());
 

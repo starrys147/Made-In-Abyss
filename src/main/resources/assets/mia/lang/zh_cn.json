@@ -2,15 +2,14 @@
   "itemGroup.mia.mia": "来自深渊",
   "item.mia.purin": "布丁",
   "item.mia.endless_cup": "无尽水杯",
-  "item.mia.time_clock" : "时间禁止之钟",
-  "item.mia.knife" : "小刀",
+  "item.mia.unheard_bell" : "时间禁止之钟",
 
   "block.mia.grass_block_d1": "深界一层草方块",
   "block.mia.covergrass_cobblestone": "覆草圆石",
   "block.mia.covergrass_andesite": "覆草安山岩",
   "block.mia.covergrass_deepslate": "覆草深板岩",
   "block.mia.chlorophyte_ore": "叶绿矿",
-  "block.mia.seventh_crucible_block": "沸腾熔炉之釜",
+  "block.mia.volcano_crucible": "火山熔炉之釜",
 
   "block.mia.example_block": "测试方块",
   "block.mia.example_portal_block": "测试传送方块"

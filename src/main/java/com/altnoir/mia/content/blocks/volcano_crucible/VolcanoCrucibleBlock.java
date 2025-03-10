@@ -1,4 +1,4 @@
-package com.altnoir.mia.content.blocks.seventhcrucible;
+package com.altnoir.mia.content.blocks.volcano_crucible;
 
 import com.altnoir.mia.BlockEntityRegister;
 import com.mojang.logging.LogUtils;

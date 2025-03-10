@@ -1,36 +1,12 @@
 {
-    "type": "mia:alluring_forest",
+    "type": "mia:abyss_brink",
     "generator": {
         "type": "minecraft:noise",
         "biome_source": {
             "type": "minecraft:multi_noise",
             "biomes": [
                 {
-                    "biome": "minecraft:plains",
-                    "parameters": {
-                        "continentalness": 0,
-                        "depth": 0.125,
-                        "erosion": 0,
-                        "humidity": 0.3,
-                        "offset": 0,
-                        "temperature": 0.8,
-                        "weirdness": 0
-                    }
-                },
-                {
-                    "biome": "minecraft:forest",
-                    "parameters": {
-                        "continentalness": 0,
-                        "depth": 0.125,
-                        "erosion": 0,
-                        "humidity": 0.7,
-                        "offset": 0,
-                        "temperature": 0.7,
-                        "weirdness": 0
-                    }
-                },
-                {
-                    "biome": "mia:abyss_margin",
+                    "biome": "mia:abyss_brink/abyss_brink",
                     "parameters": {
                         "continentalness": 0,
                         "depth": 0,
@@ -40,21 +16,9 @@
                         "temperature": 0.8,
                         "weirdness": 0.4
                     }
-                },
-                {
-                    "biome": "mia:abyss",
-                    "parameters": {
-                        "continentalness": 0,
-                        "depth": 0,
-                        "erosion": 0,
-                        "humidity": 0,
-                        "offset": 0,
-                        "temperature": 0.8,
-                        "weirdness": 0.5
-                    }
                 }
             ]
         },
-        "settings": "mia:alluring_forest"
+        "settings": "mia:abyss_brink"
     }
 }

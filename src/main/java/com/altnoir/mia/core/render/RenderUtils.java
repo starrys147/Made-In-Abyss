@@ -3,8 +3,6 @@ package com.altnoir.mia.core.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -14,13 +12,8 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.Map;
-import java.util.Queue;
-
 @Mod.EventBusSubscriber
 public class RenderUtils {
-
-    static Map<ParticleRenderType, Queue<Particle>> ps = null;
 
     private static final double BASE_DISTANCE = 5.0;
 

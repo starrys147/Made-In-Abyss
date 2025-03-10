@@ -19,8 +19,7 @@ public class MIAItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         simpleItem(ItemsRegister.PURIN);
         simpleItem(ItemsRegister.ENDLESS_CUP);
-        simpleItem(ItemsRegister.KNIFE);
-        simpleItem(ItemsRegister.CLOCK);
+        simpleItem(ItemsRegister.UNHEARD_BELL);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

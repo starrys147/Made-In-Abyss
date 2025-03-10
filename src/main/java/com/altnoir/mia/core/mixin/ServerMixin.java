@@ -14,6 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.storage.WritableLevelData;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -35,7 +36,7 @@ public abstract class ServerMixin extends Level {
     }
 
     @Override
-    public <T extends Entity> void guardEntityTick(Consumer<T> p_46654_, T p_46655_) {
+    public <T extends Entity> void guardEntityTick(@NotNull Consumer<T> p_46654_, @NotNull T p_46655_) {
         if (TimeStop.get()) {
             if (!(p_46655_ instanceof Player) && p_46655_.tickCount > 0)
                 return;

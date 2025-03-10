@@ -1,6 +1,5 @@
 package com.altnoir.mia;
 
-import com.altnoir.mia.client.entity.KnifeRenderer;
 import com.altnoir.mia.content.ability.Curse;
 import com.altnoir.mia.content.ability.CurseConfigManager;
 import com.altnoir.mia.content.ability.TimeStop;
@@ -9,7 +8,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -88,8 +86,6 @@ public class MIA {
             // 一些客户端设置代码
             LOGGER.info("来自客户端设置的问候");
             LOGGER.info("MINECRAFT 名称 >> {}", Minecraft.getInstance().getUser().getName());
-
-            EntityRenderers.register(EntityRegister.flyingSwordEntity.get(), KnifeRenderer::new);
         }
     }
 }
