@@ -26,3 +26,4 @@ forge*changelog.txt
 /.history
 /run-data
 /src/generated/resources/.cache
+/runs

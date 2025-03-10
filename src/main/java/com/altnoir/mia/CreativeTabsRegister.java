@@ -27,7 +27,7 @@ public class CreativeTabsRegister {
                         pOutput.accept(ItemsRegister.PURIN.get());
                         pOutput.accept(ItemsRegister.ENDLESS_CUP.get());
                         pOutput.accept(ItemsRegister.CLOCK.get());
-                        pOutput.accept(ItemsRegister.Knife.get());
+                        pOutput.accept(ItemsRegister.KNIFE.get());
                     })
                     .build());
 

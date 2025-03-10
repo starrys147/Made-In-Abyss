@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/deepslate",
+    "side": "mia:block/covergrass_deepslate",
+    "top": "mia:block/grass_block_top_d1"
+  }
+}

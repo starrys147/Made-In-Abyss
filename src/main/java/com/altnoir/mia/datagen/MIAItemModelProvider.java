@@ -18,6 +18,9 @@ public class MIAItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(ItemsRegister.PURIN);
+        simpleItem(ItemsRegister.ENDLESS_CUP);
+        simpleItem(ItemsRegister.KNIFE);
+        simpleItem(ItemsRegister.CLOCK);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

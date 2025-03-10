@@ -1,9 +1,0 @@
-{
-  "parent": "mia:block/grass_block_d1",
-  "textures": {
-    "particle": "block/andesite",
-    "bottom": "block/andesite",
-    "top": "mia:block/grass_block_top_d1",
-    "side": "mia:block/covergrass_andesite"
-  }
-}
