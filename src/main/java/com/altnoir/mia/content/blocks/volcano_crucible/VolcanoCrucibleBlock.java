@@ -18,19 +18,19 @@ import net.minecraftforge.fluids.FluidUtil;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
-public class SeventhCrucibleBlock extends BaseEntityBlock {
+public class VolcanoCrucibleBlock extends BaseEntityBlock {
     // TODO:模型的大小，等待render的TODO
     // public static final VoxelShape SHAPE = Block.box(TODO);
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public SeventhCrucibleBlock(Properties pProperties) {
+    public VolcanoCrucibleBlock(Properties pProperties) {
         super(pProperties);
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new SeventhCrucibleEntity(blockPos,blockState);
+        return new VolcanoCrucibleEntity(blockPos,blockState);
     }
 
     @Override
@@ -41,8 +41,8 @@ public class SeventhCrucibleBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if(!pLevel.isClientSide){
-            SeventhCrucibleEntity seventhCrucibleEntity = (SeventhCrucibleEntity) pLevel.getBlockEntity(pPos);
-            FluidUtil.interactWithFluidHandler(pPlayer,pHand, seventhCrucibleEntity.getFluidTank());
+            VolcanoCrucibleEntity volcanoCrucibleEntity = (VolcanoCrucibleEntity) pLevel.getBlockEntity(pPos);
+            FluidUtil.interactWithFluidHandler(pPlayer,pHand, volcanoCrucibleEntity.getFluidTank());
         }
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide);
@@ -51,6 +51,6 @@ public class SeventhCrucibleBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return pLevel.isClientSide ? null : createTickerHelper(pBlockEntityType, BlockEntityRegister.SEVENTH_CRUCIBLE_ENTITY.get(), SeventhCrucibleEntity::serverTick);
+        return pLevel.isClientSide ? null : createTickerHelper(pBlockEntityType, BlockEntityRegister.SEVENTH_CRUCIBLE_ENTITY.get(), VolcanoCrucibleEntity::serverTick);
     }
 }

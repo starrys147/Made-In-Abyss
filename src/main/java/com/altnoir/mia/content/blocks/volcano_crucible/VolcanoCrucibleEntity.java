@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
-public class SeventhCrucibleEntity extends BlockEntity {
+public class VolcanoCrucibleEntity extends BlockEntity {
     private final FluidTank fluidTank;
     private final LazyOptional<IFluidHandler> handler;
     private int capacity = 1000;
@@ -31,7 +31,7 @@ public class SeventhCrucibleEntity extends BlockEntity {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public SeventhCrucibleEntity(BlockPos pPos, BlockState pBlockState){
+    public VolcanoCrucibleEntity(BlockPos pPos, BlockState pBlockState){
         super(BlockEntityRegister.SEVENTH_CRUCIBLE_ENTITY.get(), pPos, pBlockState);
         this.fluidTank = new FluidTank(capacity){
             // 只允许熔岩
@@ -42,8 +42,8 @@ public class SeventhCrucibleEntity extends BlockEntity {
 
             @Override
             protected void onContentsChanged() {
-                SeventhCrucibleEntity.this.setChanged();
-                SeventhCrucibleEntity.this.Sync();
+                VolcanoCrucibleEntity.this.setChanged();
+                VolcanoCrucibleEntity.this.Sync();
 
             }
         };
@@ -125,9 +125,9 @@ public class SeventhCrucibleEntity extends BlockEntity {
     }
 
     public static void serverTick(Level pLevel, BlockPos pPos, BlockState pBlockState, BlockEntity pBlockEntity) {
-        if (pBlockEntity instanceof SeventhCrucibleEntity seventhCrucibleEntity) {
-            FluidStack fluidStack = new FluidStack(Fluids.LAVA, seventhCrucibleEntity.getFillLava());
-            seventhCrucibleEntity.fluidTank.fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
+        if (pBlockEntity instanceof VolcanoCrucibleEntity volcanoCrucibleEntity) {
+            FluidStack fluidStack = new FluidStack(Fluids.LAVA, volcanoCrucibleEntity.getFillLava());
+            volcanoCrucibleEntity.fluidTank.fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
         }
     }
 }
