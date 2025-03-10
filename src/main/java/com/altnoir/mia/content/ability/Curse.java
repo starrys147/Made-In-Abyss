@@ -1,6 +1,5 @@
-package com.altnoir.mia.content;
+package com.altnoir.mia.content.ability;
 
-import com.altnoir.mia.CurseConfigManager;
 import com.altnoir.mia.MIA;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;

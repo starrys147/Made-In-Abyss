@@ -1,4 +1,4 @@
-package com.altnoir.mia.core.client;
+package com.altnoir.mia.core.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;

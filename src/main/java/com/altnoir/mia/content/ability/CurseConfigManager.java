@@ -1,4 +1,4 @@
-package com.altnoir.mia;
+package com.altnoir.mia.content.ability;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;

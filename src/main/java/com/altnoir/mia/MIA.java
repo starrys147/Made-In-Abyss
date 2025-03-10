@@ -1,8 +1,9 @@
 package com.altnoir.mia;
 
 import com.altnoir.mia.client.entity.KnifeRenderer;
-import com.altnoir.mia.content.Curse;
-import com.altnoir.mia.content.Time;
+import com.altnoir.mia.content.ability.Curse;
+import com.altnoir.mia.content.ability.CurseConfigManager;
+import com.altnoir.mia.content.ability.TimeStop;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -54,7 +55,7 @@ public class MIA {
 
         ScheduledExecutorService s = Executors.newSingleThreadScheduledExecutor();
         s.scheduleAtFixedRate(() -> {
-            if (!Time.get()) Time.millis++;
+            if (!TimeStop.get()) TimeStop.millis++;
         }, 1, 1, TimeUnit.MILLISECONDS);
 
         // MinecraftForge.EVENT_BUS.register(new HoleGenerator());

@@ -1,6 +1,6 @@
 package com.altnoir.mia.core.mixin;
 
-import com.altnoir.mia.content.Time;
+import com.altnoir.mia.content.ability.TimeStop;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
@@ -36,7 +36,7 @@ public abstract class ServerMixin extends Level {
 
     @Override
     public <T extends Entity> void guardEntityTick(Consumer<T> p_46654_, T p_46655_) {
-        if (Time.get()) {
+        if (TimeStop.get()) {
             if (!(p_46655_ instanceof Player) && p_46655_.tickCount > 0)
                 return;
             chunkSource.tick(() -> true, true);
@@ -46,13 +46,13 @@ public abstract class ServerMixin extends Level {
 
     @Inject(method = "tickTime", at = @At("HEAD"), cancellable = true)
     public void tickTime(CallbackInfo ci) {
-        if (Time.get())
+        if (TimeStop.get())
             ci.cancel();
     }
 
     @Inject(method = "tickBlock", at = @At("HEAD"), cancellable = true)
     public void tickBlock(BlockPos p_184113_, Block p_184114_, CallbackInfo ci) {
-        if (Time.get())
+        if (TimeStop.get())
             ci.cancel();
     }
 }

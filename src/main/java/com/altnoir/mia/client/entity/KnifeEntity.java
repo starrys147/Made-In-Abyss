@@ -1,7 +1,7 @@
 package com.altnoir.mia.client.entity;
 
 import com.altnoir.mia.ItemsRegister;
-import com.altnoir.mia.content.Time;
+import com.altnoir.mia.content.ability.TimeStop;
 import com.altnoir.mia.EntityRegister;
 import com.altnoir.mia.SoundsRegister;
 import net.minecraft.core.BlockPos;
@@ -41,7 +41,7 @@ public class KnifeEntity extends Arrow {
 
     @Override
     public void tick() {
-        if (!Time.get() || timeStopHitMotion == null && tickCount < 5) {
+        if (!TimeStop.get() || timeStopHitMotion == null && tickCount < 5) {
             super.tick();
             if (!onGround() && !level().isClientSide()) {
                 Vec3 posVec = position();
@@ -63,7 +63,7 @@ public class KnifeEntity extends Arrow {
 
     @Override
     protected void onHit(HitResult rayTraceResult) {
-        if (!Time.get()) {
+        if (!TimeStop.get()) {
             if (rayTraceResult instanceof EntityHitResult r) {
                 if (r.getEntity() instanceof LivingEntity l) {
                     l.invulnerableTime = 0;

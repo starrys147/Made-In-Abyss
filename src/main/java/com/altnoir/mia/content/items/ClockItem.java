@@ -1,6 +1,6 @@
 package com.altnoir.mia.content.items;
 
-import com.altnoir.mia.content.Time;
+import com.altnoir.mia.content.ability.TimeStop;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
@@ -20,12 +20,11 @@ public class ClockItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level p_41432_, Player p_41433_, InteractionHand p_41434_) {
         p_41433_.setItemInHand(p_41434_, p_41433_.getItemInHand(p_41434_));
-        if (!Time.get()) {
+        if (!TimeStop.get()) {
             Minecraft.getInstance().gameRenderer.loadEffect(new ResourceLocation("shaders/post/the_world.json"));
         }
-
         if (p_41433_.level().isClientSide)
-            Time.abs(p_41433_);
+            TimeStop.abs(p_41433_);
         p_41433_.getCooldowns().addCooldown(this, 10); //物品冷却时间
         return super.use(p_41432_, p_41433_, p_41434_);
     }

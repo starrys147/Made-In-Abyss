@@ -1,4 +1,4 @@
-package com.altnoir.mia.client;
+package com.altnoir.mia.core.render;
 
 import com.altnoir.mia.MIA;
 import com.altnoir.mia.EffectsRegister;

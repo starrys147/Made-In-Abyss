@@ -4,17 +4,17 @@ import com.altnoir.mia.SoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 
-public class Time {
+public class TimeStop {
     public static long millis = 0L;
     private static boolean isTimeStop = false;
 
     public static void abs(Player e) {
-        if (!Time.get()) {
+        if (!TimeStop.get()) {
             e.playSound(SoundsRegister.STOP.get(), 1f, 1f);
         }
         isTimeStop = !isTimeStop;
         Minecraft.getInstance().pause = !Minecraft.getInstance().pause;
-        if (!Time.get()) {
+        if (!TimeStop.get()) {
             Minecraft.getInstance().gameRenderer.shutdownEffect();
         }
         Minecraft.getInstance().particleEngine.tick();
