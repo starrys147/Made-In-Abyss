@@ -22,7 +22,7 @@ public class ItemsRegister {
 
     public static final RegistryObject<Item> CLOCK = ITEMS.register("time_clock", () ->
             new ClockItem(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant().stacksTo(1)));
-    public static final RegistryObject<Item> Knife = ITEMS.register("knife", () ->
+    public static final RegistryObject<Item> KNIFE = ITEMS.register("knife", () ->
             new KnifeItem(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant().stacksTo(16)));
 
     public static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {

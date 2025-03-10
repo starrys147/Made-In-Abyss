@@ -75,6 +75,6 @@ public class KnifeEntity extends Arrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        return new ItemStack(ItemsRegister.Knife.get());
+        return new ItemStack(ItemsRegister.KNIFE.get());
     }
 }
